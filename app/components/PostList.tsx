@@ -6,7 +6,7 @@ export default async function PostList() {
     console.log('posts=>', posts,)
 
     if (!posts) {
-        return <p>Sorry, no posts available. {process.env.GITHUB_TOKEN}</p>
+        return <p>Sorry, no posts available</p>
     }
 
     return (
