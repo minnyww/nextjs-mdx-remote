@@ -9,6 +9,7 @@ export async function getPostByName(fileName: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/minnyww/blog-post/main/${fileName}`,
     {
+      next: { revalidate: 30 },
       headers: {
         Accept: "application/vnd.github+json",
         Authorization: `Bearer ${TOKEN}`,
@@ -16,7 +17,6 @@ export async function getPostByName(fileName: string) {
       },
     }
   );
-  console.log("res :: ", res, TOKEN);
 
   if (!res.ok) return undefined;
 
@@ -72,6 +72,7 @@ export async function getPostsMeta() {
   const res = await fetch(
     "https://api.github.com/repos/minnyww/blog-post/git/trees/main?recursive=1",
     {
+      next: { revalidate: 30 },
       headers: {
         Accept: "application/vnd.github+json",
         Authorization: `Bearer ${TOKEN}`,
@@ -79,7 +80,6 @@ export async function getPostsMeta() {
       },
     }
   );
-  console.log("res 22:: ", res, TOKEN);
 
   if (!res.ok) return undefined;
 
@@ -98,6 +98,7 @@ export async function getPostsMeta() {
       posts.push(meta);
     }
   }
+  // console.log("posts : ", posts);
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
