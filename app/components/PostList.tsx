@@ -3,7 +3,6 @@ import Link from "next/link"
 
 export default async function PostList() {
     const posts = await getPostsMeta()
-    console.log('posts=>', posts,)
 
     if (!posts) {
         return <p>Sorry, no posts available</p>
