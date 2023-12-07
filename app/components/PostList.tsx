@@ -3,10 +3,10 @@ import Link from "next/link"
 
 export default async function PostList() {
     const posts = await getPostsMeta()
-    console.log('posts=>', posts, process.env.GITHUB_TOKEN)
+    console.log('posts=>', posts,)
 
     if (!posts) {
-        return <p>Sorry, no posts available.</p>
+        return <p>Sorry, no posts available. {process.env.GITHUB_TOKEN}</p>
     }
 
     return (
