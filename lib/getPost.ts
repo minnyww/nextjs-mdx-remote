@@ -1,10 +1,9 @@
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import Code from "@/app/components/Code";
 import CustomImage from "@/app/components/CustomImage";
 import rehypeSlug from "rehype-slug";
 
-const TOKEN = "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";
+const TOKEN = process.env.GITHUB_TOKEN;
 
 export async function getPostByName(fileName: string) {
   const res = await fetch(
