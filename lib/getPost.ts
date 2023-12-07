@@ -16,6 +16,7 @@ export async function getPostByName(fileName: string) {
       },
     }
   );
+  console.log("res :: ", res, TOKEN);
 
   if (!res.ok) return undefined;
 
@@ -78,6 +79,7 @@ export async function getPostsMeta() {
       },
     }
   );
+  console.log("res 22:: ", res, TOKEN);
 
   if (!res.ok) return undefined;
 
